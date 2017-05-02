@@ -1,0 +1,14 @@
+FROM debian:jessie
+
+# Setting env variables
+ENV PEER_CFG_PATH=/etc/hyperledger/fabric
+
+# Copying executables and config files
+ADD output/executable /usr/local/bin
+COPY output/peerconfig/fabric ${PEER_CFG_PATH}
+
+# Copy the start script
+COPY start.sh /usr/bin/start.sh
+RUN chmod +x /usr/bin/start.sh
+
+CMD ["/usr/bin/start.sh"]
