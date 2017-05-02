@@ -1,0 +1,58 @@
+HOME            				= .
+RANDFILE        				= $ENV::HOME/.rnd
+
+####################################################################
+[ req ]
+default_bits        				= 2048
+default_keyfile     				= serverkey.pem
+distinguished_name  				= server_distinguished_name
+req_extensions      				= server_req_extensions
+string_mask         				= utf8only
+
+####################################################################
+[ server_distinguished_name ]
+countryName         				= Country Name (2 letter code)
+countryName_default     			= US
+
+stateOrProvinceName     			= State or Province Name (full name)
+stateOrProvinceName_default 		= North Carolina
+
+localityName            			= Locality Name (eg, city)
+localityName_default        		= Raleigh
+
+organizationName            		= Organization Name (eg, company)
+organizationName_default    		= IBM
+
+commonName          				= Common Name (e.g. server FQDN or YOUR name)
+commonName_default      			= Test ORG
+
+emailAddress            			= Email Address
+emailAddress_default        		= test@blockchain.com
+
+####################################################################
+[ server_req_extensions ]
+
+subjectKeyIdentifier       		 	= hash
+basicConstraints        			= CA:FALSE
+keyUsage            				= digitalSignature, keyEncipherment
+subjectAltName          			= @alternate_names
+nsComment           				= "OpenSSL Generated Certificate"
+
+####################################################################
+[ alternate_names ]
+
+DNS.1       						= blockchain.com
+DNS.2								= *.blockchain.com
+DNS.3								= *.net_blockchain.com
+DNS.4								= localhost
+DNS.5								= orderer-0a
+DNS.6								= orderer-0b
+DNS.7								= orderer-0c
+DNS.8								= fabric-peer-1a
+DNS.9								= fabric-peer-1a
+DNS.10								= fabric-ca-1a
+DNS.11								= fabric-ca-1c
+DNS.12								= fabric-ca-2a
+DNS.13								= fabric-ca-2c
+DNS.14								= fabric-peer-2a
+DNS.15								= fabric-peer-2c
