@@ -1,0 +1,232 @@
+---
+################################################################################
+#
+#   Profile
+#
+#   - Different configuration profiles may be encoded here to be specified
+#   as parameters to the configtxgen tool
+#
+################################################################################
+Profiles:
+
+    # SampleSingleMSPSolo defines a configuration which contains a single MSP
+    # definition (the MSP sampleconfig).
+    Initial:
+        Orderer:
+            <<: *OrdererDefaults
+            Organizations:
+                - *OrdererOrg1
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *PeerOrg1
+                - *PeerOrg2
+                - *PeerOrg3
+                - *PeerOrg4
+                - *PeerOrg5
+                - *PeerOrg6
+
+################################################################################
+#
+#   Section: Organizations
+#
+#   - This section defines the different organizational identities which will
+#   be referenced later in the configuration.
+#
+################################################################################
+Organizations:
+
+    # SampleOrg defines an MSP using the sampleconfig.  It should never be used
+    # in production but may be used as a template for other definitions
+    - &OrdererOrg1
+        Name: OrdererOrg1
+        ID: OrdererMSP
+        MSPDir: /mnt/crypto-config/ordererOrganizations/ordererOrg1/msp/
+
+        BCCSP:
+            Default: SW
+            SW:
+                Hash: SHA2
+                Security: 256
+                FileKeyStore:
+                    KeyStore:
+
+
+    - &PeerOrg1
+        Name: PeerOrg1
+        ID: PeerOrg1
+        MSPDir: /mnt/crypto-config/peerOrganizations/peerOrg1/msp
+
+        BCCSP:
+            Default: SW
+            SW:
+                Hash: SHA2
+                Security: 256
+                FileKeyStore:
+                    KeyStore:
+
+        AnchorPeers:
+            - Host: tor-zbc02a.3.secure.blockchain.ibm.com
+              Port: 11321
+            - Host: tor-zbc02c.3.secure.blockchain.ibm.com
+              Port: 11321
+
+    - &PeerOrg2
+        Name: PeerOrg2
+        ID: PeerOrg2
+        MSPDir: /mnt/crypto-config/peerOrganizations/peerOrg2/msp
+
+        BCCSP:
+            Default: SW
+            SW:
+                Hash: SHA2
+                Security: 256
+                FileKeyStore:
+                    KeyStore:
+
+        AnchorPeers:
+            - Host: tor-zbc02a.3.secure.blockchain.ibm.com
+              Port: 11323
+            - Host: tor-zbc02c.3.secure.blockchain.ibm.com
+              Port: 11323
+
+    - &PeerOrg3
+        Name: PeerOrg3
+        ID: PeerOrg3
+        MSPDir: /mnt/crypto-config/peerOrganizations/peerOrg3/msp
+
+        BCCSP:
+            Default: SW
+            SW:
+                Hash: SHA2
+                Security: 256
+                FileKeyStore:
+                    KeyStore:
+
+        AnchorPeers:
+            - Host: tor-zbc02a.3.secure.blockchain.ibm.com
+              Port: 11325
+            - Host: tor-zbc02c.3.secure.blockchain.ibm.com
+              Port: 11325
+
+    - &PeerOrg4
+        Name: PeerOrg4
+        ID: PeerOrg4
+        MSPDir: /mnt/crypto-config/peerOrganizations/peerOrg4/msp
+
+        BCCSP:
+            Default: SW
+            SW:
+                Hash: SHA2
+                Security: 256
+                FileKeyStore:
+                    KeyStore:
+
+        AnchorPeers:
+            - Host: tor-zbc02a.3.secure.blockchain.ibm.com
+              Port: 11327
+            - Host: tor-zbc02c.3.secure.blockchain.ibm.com
+              Port: 11327
+
+    - &PeerOrg5
+        Name: PeerOrg5
+        ID: PeerOrg5
+        MSPDir: /mnt/crypto-config/peerOrganizations/peerOrg5/msp
+
+        BCCSP:
+            Default: SW
+            SW:
+                Hash: SHA2
+                Security: 256
+                FileKeyStore:
+                    KeyStore:
+
+        AnchorPeers:
+            - Host: tor-zbc02a.3.secure.blockchain.ibm.com
+              Port: 11329
+            - Host: tor-zbc02c.3.secure.blockchain.ibm.com
+              Port: 11329
+
+    - &PeerOrg6
+        Name: PeerOrg6
+        ID: PeerOrg6
+        MSPDir: /mnt/crypto-config/peerOrganizations/peerOrg6/msp
+
+        BCCSP:
+            Default: SW
+            SW:
+                Hash: SHA2
+                Security: 256
+                FileKeyStore:
+                    KeyStore:
+
+        AnchorPeers:
+            - Host: tor-zbc02a.3.secure.blockchain.ibm.com
+              Port: 11331
+            - Host: tor-zbc02c.3.secure.blockchain.ibm.com
+              Port: 11331
+
+
+################################################################################
+#
+#   SECTION: Orderer
+#
+#   - This section defines the values to encode into a config transaction or
+#   genesis block for orderer related parameters
+#
+################################################################################
+Orderer: &OrdererDefaults
+
+    # Orderer Type: The orderer implementation to start
+    # Available types are "solo" and "kafka"
+    OrdererType: kafka
+
+    Addresses:
+         - tor-zbc02a.3.secure.blockchain.ibm.com:11305
+         - tor-zbc02b.3.secure.blockchain.ibm.com:11305
+         - tor-zbc02c.3.secure.blockchain.ibm.com:11305
+
+    # Batch Timeout: The amount of time to wait before creating a batch
+    BatchTimeout: 1s
+
+    # Batch Size: Controls the number of messages batched into a block
+    BatchSize:
+
+        # Max Message Count: The maximum number of messages to permit in a batch
+        MaxMessageCount: 10
+
+        # Absolute Max Bytes: The absolute maximum number of bytes allowed for
+        # the serialized messages in a batch.
+        AbsoluteMaxBytes: 99 MB
+
+        # Preferred Max Bytes: The preferred maximum number of bytes allowed for
+        # the serialized messages in a batch. A message larger than the preferred
+        # max bytes will result in a batch larger than preferred max bytes.
+        PreferredMaxBytes: 512 KB
+
+    Kafka:
+        # Brokers: A list of Kafka brokers to which the orderer connects
+        # NOTE: Use IP:port notation
+        Brokers:
+             - tor-zbc02a.3.secure.blockchain.ibm.com:11303
+             - tor-zbc02b.3.secure.blockchain.ibm.com:11303
+             - tor-zbc02c.3.secure.blockchain.ibm.com:11303
+
+    # Organizations is the list of orgs which are defined as participants on
+    # the orderer side of the network
+    Organizations:
+
+################################################################################
+#
+#   SECTION: Application
+#
+#   - This section defines the values to encode into a config transaction or
+#   genesis block for application related parameters
+#
+################################################################################
+Application: &ApplicationDefaults
+
+    # Organizations is the list of orgs which are defined as participants on
+    # the application side of the network
+    Organizations:
+
