@@ -1,0 +1,46 @@
+{
+	"credentials": {
+		"network_id": "FakeNetwork",
+		"orderers": [
+			{
+				"discovery": "grpcs://tor-zbc02a.3.secure.blockchain.ibm.com:11305",
+				"msp_id": "OrdererMSP",
+				"tls_certificate": "cert_1"
+			}
+		],
+		"cas": [
+			{
+				"api": "https://tor-zbc02a.3.secure.blockchain.ibm.com:11311",
+				"msp_id": "PeerOrg1",
+				"users": [
+					{
+						"enrollId": "admin",
+						"enrollSecret": "12387b87ea"
+					}
+				],
+				"tls_certificate": "cert_1"
+			}
+		],
+		"peers": [
+			{
+				"name": "fabric-peer-1a",
+				"discovery": "grpcs://localhost:5011",
+				"events": "grpcs://localhost:5010",
+				"msp_id": "PeerOrg1",
+				"tls_certificate": "cert_1"
+			}
+		],
+		"app": {
+			"channel_id": "mychannel",
+			"chaincode_id": "end2end",
+			"chaincode_version": "v0",
+			"block_delay": 10000
+		},
+		"tls_certificates": {
+			"cert_1": {
+				"common_name": null,
+				"pem": "../cacert.pem"
+			}
+		}
+	}
+}
