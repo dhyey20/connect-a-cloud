@@ -34,4 +34,4 @@ else
 	exit 1
 fi
 
-docker tag hyperledger/fabric-peer:local dhyeyibm/fabric-peer:${PEER_VERSION}
+docker tag hyperledger/fabric-peer:local dhyeyibm/fabric-peer:local
