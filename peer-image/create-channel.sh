@@ -23,4 +23,4 @@ fi
 
 peer channel fetch -o ${ORDERER_URL} -c ${CHANNEL_NAME} --tls --cafile ${TLS_HSBN_CERT}
 
-peer channel join -o ${ORDERER_URL} -b ${CHANNEL_NAME}.block -c ${CHANNEL_NAME} --tls --cafile ${TLS_HSBN_CERT}
+peer channel join -b ${CHANNEL_NAME}.block
