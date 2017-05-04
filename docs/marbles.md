@@ -30,6 +30,7 @@ npm install
 gulp ca
 
 # Object.serialize error? 
+#"grpc": "1.2.4", in fabric-sdk-node/fabric-client/package.json
 ```
 
 ### Installing node modules for marbles
@@ -51,6 +52,10 @@ npm install -g gulp
   - in `fabric-sdk-node/test/fixtures/src/github.com/example_cc` delete the `example_cc.go` 
   - copy `marbles/chaincode/src/marbles/*` to  `fabric-sdk-node/test/fixtures/src/github.com/example_cc`
   - in `fabric-sdk-node/test/integration/e2e/instantiate-chaincode.js` -> change `args: ['a', '100', 'b', '200'],` to `args: ['123'],`
+  - in `fabric-sdk-node/test/unit/util.js` change the ca password on line 195
+	`return getSubmitter('admin', '*******', client, test, fromConfig, userOrg);`
+
+
 
 ### Setup marbles config
   - copy the tls cacert.pem from `connect-a-cloud/start-up/tls/cacert.pem` to `marbles/config/cacert.pem`
