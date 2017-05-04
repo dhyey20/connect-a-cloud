@@ -25,9 +25,9 @@ services:
       - CORE_PEER_DISCOVERY_PERIOD=60s
       - CORE_PEER_DISCOVERY_TOUCHPERIOD=60s
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
-      - CORE_PEER_LOCALMSPID=PeerOrg1
+      - CORE_PEER_LOCALMSPID=${LOCALMSPID}
       - CORE_PEER_MSPCONFIGPATH=/mnt/msp
-      - CORE_LOGGING_LEVEL=debug
+      - CORE_LOGGING_LEVEL=info
       - CORE_PEER_ID=fabric-peer
       - CORE_PEER_TLS_ENABLED=true
       - CORE_PEER_TLS_CERT_FILE=/certs/peerlocal-cert.pem
