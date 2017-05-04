@@ -1,0 +1,20 @@
+{
+	"test-network": {
+		"orderer": {
+			"url": "grpcs://tor-zbc02a.3.secure.blockchain.ibm.com:11305",
+			"server-hostname": "",
+			"tls_cacerts": "../../../3.secure.cert"
+		},
+		"org1": {
+			"name": "PeerOrg1",
+			"mspid": "PeerOrg1",
+			"ca": "https://tor-zbc02a.3.secure.blockchain.ibm.com:11311",
+			"peer1": {
+				"requests": "grpcs://localhost:5011",
+				"events": "grpcs://localhost:5010",
+				"server-hostname": "fabric-peer.net_blockchain.com",
+				"tls_cacerts": "../../../cacert.pem"
+			}
+		}
+	}
+}
