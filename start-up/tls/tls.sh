@@ -25,4 +25,6 @@ openssl req -x509 -config openssl-ca.cnf -newkey rsa:4096 -sha256 -nodes -out ca
 openssl req -config openssl-server.cnf -newkey rsa:2048 -sha256 -nodes -out servercert.csr -outform PEM -keyout peerlocal-key.pem -subj "/C=US/ST=North Carolina/L=Raleigh/O=IBM/OU=PeerOrg1/CN=fabric-peer-local.net_blockchain.com"
 openssl ca -batch -config openssl-ca.cnf -policy signing_policy -extensions signing_req -out peerlocal-cert.pem -infiles servercert.csr
 
-cat 3.secure.cert >> cacert.pem
+cat 3.secure.cert >> cacert_new.pem
+cat cacert.pem >> cacert_new.pem
+mv cacert_new.pem cacert.pem
