@@ -36,13 +36,13 @@ services:
       - CORE_PEER_TLS_SERVERHOSTOVERRIDE=fabric-peer.net_blockchain.com
       - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=net_blockchain.com
       - PEER_CFG_PATH=/mnt
-      - CA_HOST=tor-zbc02a.3.secure.blockchain.ibm.com
-      - CA_PORT=11311
-      - CA_USER=admin
-      - CA_PASSWORD=12387b87ea
-      - TLS_HSBN_CERT=/certs/3.secure.cert
-      - ORDERER_URL=tor-zbc02a.3.secure.blockchain.ibm.com:11305
-      - CHANNEL_NAME=mychannel
+      - CA_HOST=${CA_HOST}
+      - CA_PORT=${CA_PORT}
+      - CA_USER=${CA_USER}
+      - CA_PASSWORD=${CA_PASSWORD}
+      - TLS_HSBN_CERT=${TLS_HSBN_CERT}
+      - ORDERER_URL=${ORDERER_URL}
+      - CHANNEL_NAME=${CHANNEL_NAME}
     volumes:
       - ./config:/mnt/
       - ./tls:/certs
