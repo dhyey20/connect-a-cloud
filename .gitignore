@@ -1,0 +1,6 @@
+/start-up/tls/*
+!/start-up/tls/*.secure.cert
+!/start-up/tls/openssl*
+!/start-up/tls/tls.sh
+/start-up/config/msp
+/start-up/config/fabric-ca-client-config.yaml
