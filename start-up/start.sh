@@ -1,24 +1,18 @@
 #!/bin/bash
+TLS_HSBN_CERT=/certs/3.secure.cert
 
-if [ -z ${LOCALMSPID} ]; then
-	echo "Please set the LOCALMSPID"
+if [ -z ${PEERMSPID} ]; then
+	echo "Please set the PEERMSPID"
 	exit 1
 else
-	echo "LOCALMSPID is ${LOCALMSPID}"
+	echo "PEERMSPID is ${PEERMSPID}"
 fi
 
-if [ -z ${CA_HOST} ]; then
-	echo "Please set the CA_HOST"
+if [ -z ${CA_URL} ]; then
+	echo "Please set the CA_URL"
 	exit 1
 else
-	echo "CA Host is ${CA_HOST}"
-fi
-
-if [ -z ${CA_PORT} ]; then
-	echo "Please set the CA_PORT"
-	exit 2
-else
-	echo "CA Port is ${CA_PORT}"
+	echo "CA Host is ${CA_URL}"
 fi
 
 if [ -z ${CA_USER} ]; then
@@ -59,7 +53,7 @@ fi
 ARCH=`uname -m | sed 's|i686|x86_64|'`
 
 docker pull hyperledger/fabric-ccenv:${ARCH}-1.0.0-alpha
-docker rm -f $(docker ps -a -q)
+docker-compose down -d
 docker rmi -f connectacloud-fabric-peer-end2end-v0
 
 rm -rf config/msp

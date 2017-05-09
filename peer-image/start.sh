@@ -1,17 +1,10 @@
 #!/bin/bash
 
-if [ -z ${CA_HOST} ]; then
-	echo "Please set the CA_HOST"
+if [ -z ${CA_URL} ]; then
+	echo "Please set the CA_URL"
 	exit 1
 else
-	echo "CA Host is ${CA_HOST}"
-fi
-
-if [ -z ${CA_PORT} ]; then
-	echo "Please set the CA_PORT"
-	exit 2
-else
-	echo "CA Port is ${CA_PORT}"
+	echo "CA Host is ${CA_URL}"
 fi
 
 if [ -z ${CA_USER} ]; then
@@ -39,11 +32,11 @@ export FABRIC_CA_CLIENT_HOME=${CORE_PEER_MSPCONFIGPATH}/..
 
 echo "Getting the certs from CA"
 if [ "${CORE_PEER_TLS_ENABLED}" == "true" ]; then
-	echo "fabric-ca-client enroll -u https://${CA_USER}:CA_PASSWORD@${CA_HOST}:${CA_PORT} --tls.enabled --tls.certfiles ${TLS_HSBN_CERT}"
-	fabric-ca-client enroll -u https://${CA_USER}:${CA_PASSWORD}@${CA_HOST}:${CA_PORT} --tls.enabled --tls.certfiles ${TLS_HSBN_CERT}
+	echo "fabric-ca-client enroll -u https://${CA_USER}:CA_PASSWORD@${CA_URL} --tls.enabled --tls.certfiles ${TLS_HSBN_CERT}"
+	fabric-ca-client enroll -u https://${CA_USER}:${CA_PASSWORD}@${CA_URL} --tls.enabled --tls.certfiles ${TLS_HSBN_CERT}
 else
-	echo "fabric-ca-client enroll -u http://${CA_USER}:CA_PASSWORD@${CA_HOST}:${CA_PORT}"
-	fabric-ca-client enroll -u http://${CA_USER}:${CA_PASSWORD}@${CA_HOST}:${CA_PORT}
+	echo "fabric-ca-client enroll -u http://${CA_USER}:CA_PASSWORD@${CA_URL}"
+	fabric-ca-client enroll -u http://${CA_USER}:${CA_PASSWORD}@${CA_URL}
 fi
 
 set +e

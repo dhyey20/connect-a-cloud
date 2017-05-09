@@ -9,7 +9,7 @@ cd peer-image
 ## Start the peer
 ```bash
 cd start-up
-LOCALMSPID= CA_HOST= CA_PORT= CA_USER= CA_PASSWORD= TLS_HSBN_CERT= ORDERER_URL= CHANNEL_NAME= ./start.sh
+PEERMSPID= CA_URL= CA_USER= CA_PASSWORD= ORDERER_URL= CHANNEL_NAME= ./start.sh
 ```
 
 ## Run Marbles
