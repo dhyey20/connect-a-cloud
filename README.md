@@ -19,3 +19,6 @@ docker exec net_fabric-peer_1 joinChannel.sh
 
 ## Run Marbles
 - Follow the instructions [here](docs/marbles.md)
+
+### NOTE:
+- delete all the chaincode images from previous run for the new tls certs to be used
