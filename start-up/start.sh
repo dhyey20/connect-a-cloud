@@ -1,5 +1,6 @@
 #!/bin/bash
-TLS_HSBN_CERT=/certs/3.secure.cert
+
+export TLS_HSBN_CERT=/certs/3.secure.cert
 
 if [ -z ${PEERMSPID} ]; then
 	echo "Please set the PEERMSPID"

@@ -36,8 +36,7 @@ services:
       - CORE_PEER_TLS_SERVERHOSTOVERRIDE=fabric-peer.net_blockchain.com
       - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=net_blockchain.com
       - PEER_CFG_PATH=/mnt
-      - CA_HOST=${CA_HOST}
-      - CA_PORT=${CA_PORT}
+      - CA_URL=${CA_URL}
       - CA_USER=${CA_USER}
       - CA_PASSWORD=${CA_PASSWORD}
       - TLS_HSBN_CERT=${TLS_HSBN_CERT}
