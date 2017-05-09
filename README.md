@@ -12,5 +12,10 @@ cd start-up
 PEERMSPID= CA_URL= CA_USER= CA_PASSWORD= ORDERER_URL= CHANNEL_NAME= ./start.sh
 ```
 
+## Join the channel 
+```bash
+docker exec net_fabric-peer_1 joinChannel.sh
+```
+
 ## Run Marbles
 - Follow the instructions [here](docs/marbles.md)

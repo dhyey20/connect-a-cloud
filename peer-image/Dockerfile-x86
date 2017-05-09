@@ -9,8 +9,8 @@ COPY output/peerconfig/fabric ${PEER_CFG_PATH}
 
 # Copy the start script
 COPY start.sh /usr/bin/start.sh
-COPY create-channel.sh /usr/bin/create-channel.sh
+COPY joinChannel.sh /usr/bin/joinChannel.sh
 RUN chmod +x /usr/bin/start.sh
-RUN chmod +x /usr/bin/create-channel.sh
+RUN chmod +x /usr/bin/joinChannel.sh
 
 CMD ["/usr/bin/start.sh"]
