@@ -53,7 +53,7 @@ fi
 ARCH=`uname -m | sed 's|i686|x86_64|'`
 
 docker pull hyperledger/fabric-ccenv:${ARCH}-1.0.0-alpha
-docker-compose down -d
+docker-compose down
 docker rmi -f connectacloud-fabric-peer-end2end-v0
 
 rm -rf config/msp
