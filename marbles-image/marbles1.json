@@ -1,0 +1,13 @@
+{
+	"cred_filename": "blockchain_creds1.json",
+	"use_events": true,
+	"keep_alive_secs": 120,
+	"company": "COMPANY",
+	"usernames": [
+		"USER1",
+		"USER2",
+		"USER3"
+	],
+	"port": 30001,
+	"last_startup_hash": "dee29764a26f19e5deacafab5bf7c7b2b55f2c77"
+}

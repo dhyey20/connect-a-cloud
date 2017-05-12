@@ -1,0 +1,46 @@
+{
+	"credentials": {
+		"network_id": "FakeNetwork",
+		"orderers": [
+			{
+				"discovery": "grpcs://ORDERER_URL",
+				"msp_id": "ORDERER_MSPID",
+				"tls_certificate": "cert_1"
+			}
+		],
+		"cas": [
+			{
+				"api": "https://CA_URL",
+				"msp_id": "PEER_MSPID",
+				"users": [
+					{
+						"enrollId": "CA_USER",
+						"enrollSecret": "CA_PASSWORD"
+					}
+				],
+				"tls_certificate": "cert_1"
+			}
+		],
+		"peers": [
+			{
+				"name": "fabric-peer",
+				"discovery": "grpcs://fabric-peer.net_blockchain.com:5011",
+				"events": "grpcs://fabric-peer.net_blockchain.com:5010",
+				"msp_id": "PEER_MSPID",
+				"tls_certificate": "cert_1"
+			}
+		],
+		"app": {
+			"channel_id": "CHANNEL_NAME",
+			"chaincode_id": "CHAINCODE_ID",
+			"chaincode_version": "CHAINCODE_VERSION",
+			"block_delay": 10000
+		},
+		"tls_certificates": {
+			"cert_1": {
+				"common_name": null,
+				"pem": "../cacert.pem"
+			}
+		}
+	}
+}
