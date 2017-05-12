@@ -1,12 +1,17 @@
 #!/bin/bash
 
-export TLS_HSBN_CERT=/certs/3.secure.cert
-
 if [ -z ${PEER_MSPID} ]; then
 	echo "Please set the PEER_MSPID"
 	exit 1
 else
 	echo "Peer MSPID is ${PEER_MSPID}"
+fi
+
+if [ -z ${ORDERER_MSPID} ]; then
+	echo "Please set the ORDERER_MSPID"
+	exit 2
+else
+	echo "Orderer MSPID is ${ORDERER_MSPID}"
 fi
 
 if [ -z ${CA_URL} ]; then
@@ -28,13 +33,6 @@ if [ -z ${CA_PASSWORD} ]; then
 	exit 4
 else
 	echo "CA Password is ***** :P"
-fi
-
-if [ -z ${TLS_HSBN_CERT} ]; then
-	echo "Please set the TLS_HSBN_CERT"
-	exit 5
-else
-	echo "TLS HSBN cert is at ${TLS_HSBN_CERT}"
 fi
 
 if [ -z ${ORDERER_URL} ]; then
@@ -96,25 +94,7 @@ fi
 ARCH=`uname -m | sed 's|i686|x86_64|'`
 
 docker pull hyperledger/fabric-ccenv:${ARCH}-1.0.0-alpha
-docker-compose down
-docker rmi -f connectacloud-fabric-peer-end2end-v0
 docker images | grep connectacloud-fabric-peer | awk '{print $3}' | xargs docker rmi -f
-rm -rf config/msp
-rm config/fabric-*
-
-cd tls
-./tls.sh
-cd ..
-
-echo "Starting the peer"
-docker-compose up -d fabric-peer
-
-sleep 10
-
-echo "Joining peer to channel: ${CHANNEL}"
-docker exec net_fabric-peer_1 joinChannel.sh
-
-sleep 10
 
 echo "Starting marbles"
 docker-compose up -d marbles
