@@ -5,7 +5,7 @@ networks:
 
 services:
   fabric-peer:
-    image: dhyeyibm/fabric-peer:local
+    image: hyperledger/fabric-peer:local
     restart: unless-stopped
     hostname: fabric-peer
     ports:
@@ -25,7 +25,7 @@ services:
       - CORE_PEER_DISCOVERY_PERIOD=60s
       - CORE_PEER_DISCOVERY_TOUCHPERIOD=60s
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
-      - CORE_PEER_LOCALMSPID=${PEERMSPID}
+      - CORE_PEER_LOCALMSPID=${PEER_MSPID}
       - CORE_PEER_MSPCONFIGPATH=/mnt/msp
       - CORE_LOGGING_LEVEL=info
       - CORE_PEER_ID=fabric-peer
@@ -48,3 +48,29 @@ services:
       - /var/run:/host/var/run/
     networks:
       - blockchain.com
+  
+  marbles:
+    image: marbles:local
+    hostname: marbles
+    ports:
+     - 30001:30001
+    environment:  
+     - PEER_MSPID=${PEER_MSPID}
+     - ORDERER_MSPID=${ORDERER_MSPID}
+     - CA_URL=${CA_URL}
+     - CA_USER=${CA_USER}
+     - CA_HOST=${CA_HOST}
+     - CA_PASSWORD=${CA_PASSWORD}
+     - ORDERER_URL=${ORDERER_URL}
+     - CHANNEL_NAME=${CHANNEL_NAME}
+     - CHAINCODE_ID=${CHAINCODE_ID}
+     - CHAINCODE_VERSION=${CHAINCODE_VERSION}
+     - COMPANY=${COMPANY}
+     - USER1=${USER1}
+     - USER2=${USER2}
+     - USER3=${USER3}
+    volumes:
+      - ./tls:/certs
+    networks:
+     - blockchain.com
+  
