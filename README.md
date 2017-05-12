@@ -6,19 +6,16 @@ cd peer-image
 ./build.sh
 ```
 
+## Build the marbles image
+```bash
+cd marbles-image
+./build.sh
+```
 ## Start the peer
 ```bash
 cd start-up
-PEERMSPID= CA_URL= CA_USER= CA_PASSWORD= ORDERER_URL= CHANNEL_NAME= ./start.sh
+PEER_MSPID= ORDERER_MSPID= CA_URL= CA_USER= CA_PASSWORD= ORDERER_URL= CHANNEL_NAME= CHAINCODE_ID= CHAINCODE_VERSION= COMPANY= USER1= USER2= USER3= ./start.sh
 ```
-
-## Join the channel 
-```bash
-docker exec net_fabric-peer_1 joinChannel.sh
-```
-
-## Run Marbles
-- Follow the instructions [here](docs/marbles.md)
 
 ### NOTE:
 - delete all the chaincode images from previous run for the new tls certs to be used
