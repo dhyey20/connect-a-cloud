@@ -33,5 +33,3 @@ else
 	echo "Unsupported architecure";
 	exit 1
 fi
-
-docker tag hyperledger/fabric-peer:local dhyeyibm/fabric-peer:local
