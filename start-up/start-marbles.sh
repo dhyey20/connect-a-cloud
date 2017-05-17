@@ -96,6 +96,8 @@ ARCH=`uname -m | sed 's|i686|x86_64|'`
 docker pull hyperledger/fabric-ccenv:${ARCH}-1.0.0-alpha
 docker images | grep connectacloud-fabric-peer | awk '{print $3}' | xargs docker rmi -f
 
+docker restart net_fabric-peer_1
+
 echo "Starting marbles"
 docker-compose up -d marbles
 

@@ -59,7 +59,6 @@ services:
      - ORDERER_MSPID=${ORDERER_MSPID}
      - CA_URL=${CA_URL}
      - CA_USER=${CA_USER}
-     - CA_HOST=${CA_HOST}
      - CA_PASSWORD=${CA_PASSWORD}
      - ORDERER_URL=${ORDERER_URL}
      - CHANNEL_NAME=${CHANNEL_NAME}
