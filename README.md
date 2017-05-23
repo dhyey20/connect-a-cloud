@@ -1,5 +1,14 @@
 # connect-a-cloud
 
+## Run using start script
+```
+- Copy your HSBN Bluemix Service Credentials to service-creds.json file.
+
+- Make changes in the start.sh file -> Add CHANNEL, COMPANY, USER1, USER2, USER3
+
+- Run the start script (Requires python)
+```
+
 ## Build the peer image
 ```bash
 cd peer-image
